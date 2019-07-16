@@ -52,6 +52,9 @@ $html = file_get_contents(__DIR__ . '/DomView.html');
 
 $container = new InstanceContainer;
 
+/** @var DomView $view */
 $view = $container->get(DomView::class);
+
+$view->setTitle('Hello Webino');
 
 echo $view->render($html);

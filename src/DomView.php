@@ -2,9 +2,6 @@
 
 namespace Webino;
 
-use DOMDocument;
-use DOMXPath;
-
 /**
  * Class DomView
  * @package dom-view
@@ -15,6 +12,11 @@ class DomView implements InstanceFactoryMethodInterface
      * @var InstanceContainerInterface
      */
     private $container;
+
+    /**
+     * @var string
+     */
+    private $title = '';
 
     /**
      * @param CreateInstanceEventInterface $event
@@ -35,6 +37,14 @@ class DomView implements InstanceFactoryMethodInterface
     }
 
     /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
      * @param string $html
      * @return string
      */
@@ -47,6 +57,10 @@ class DomView implements InstanceFactoryMethodInterface
         ];
 
         $dom = new ViewDocument($html);
+
+        if ($titleNode = $dom->queryNode('/html/head/title')) {
+            $titleNode->nodeValue = $this->title;
+        }
 
         $render = true;
         while ($render) {

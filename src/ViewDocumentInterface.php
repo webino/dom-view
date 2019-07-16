@@ -10,10 +10,10 @@ interface ViewDocumentInterface
 {
     /**
      * @param string $xpath
-     * @param ViewNode|null $node
+     * @param ViewElement|null $node
      * @return iterable
      */
-    public function query(string $xpath, ViewNode $node = null): iterable;
+    public function query(string $xpath, ViewElement $node = null): iterable;
 
     /**
      * @return string
