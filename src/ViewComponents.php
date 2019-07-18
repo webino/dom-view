@@ -27,7 +27,7 @@ class ViewComponents extends ArrayObject implements ViewComponentMapInterface
 
         foreach ($options as $key => $value) {
 
-            if (is_numeric($key) && is_string($value) && class_exists($value)
+            if (is_string($value) && class_exists($value)
                 && !empty(class_implements($value)[ViewComponentInterface::class])
             ) {
                 $xpath = '//' . constant("$value::NAME");
