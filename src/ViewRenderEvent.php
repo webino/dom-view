@@ -16,6 +16,8 @@ namespace Webino;
  */
 class ViewRenderEvent extends Event implements ViewRenderEventInterface
 {
+    use AppAwareEventTrait;
+
     /**
      * Returns view node to render.
      *

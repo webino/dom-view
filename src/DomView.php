@@ -22,6 +22,11 @@ class DomView implements InstanceFactoryMethodInterface
     private $container;
 
     /**
+     * @var ViewComponentMapInterface
+     */
+    private $components;
+
+    /**
      * @var string
      */
     private $title = '';
@@ -33,23 +38,39 @@ class DomView implements InstanceFactoryMethodInterface
     public static function create(CreateInstanceEventInterface $event): DomView
     {
         $container = $event->getContainer();
-        return new static($container);
+        $params = $event->getParameters();
+        return new static($container, ...$params);
     }
 
     /**
      * @param InstanceContainerInterface $container
+     * @param ViewComponents $components
      */
-    public function __construct(InstanceContainerInterface $container)
+    public function __construct(InstanceContainerInterface $container, ViewComponents $components)
     {
         $this->container = $container;
+        $this->components = $components;
     }
 
     /**
      * @param string $title
+     * @return void
      */
     public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
+
+    /**
+     * @param ViewDocumentInterface $dom
+     * @return void
+     */
+    protected function renderTitle(ViewDocumentInterface $dom): void
+    {
+        /** @var ViewElement $titleNode */
+        if ($titleNode = $dom->queryNode('/html/head/title')) {
+            $titleNode->nodeValue = $this->title;
+        }
     }
 
     /**
@@ -58,30 +79,23 @@ class DomView implements InstanceFactoryMethodInterface
      */
     public function render(string $html): string
     {
-        // TODO
-        $xpaths = [
-            TestSubComponent::XPATH => TestSubComponent::class,
-            TestComponent::XPATH => TestComponent::class,
-        ];
+        $dom = $this->container->make(ViewDocumentInterface::class, $html);
 
-        $dom = new ViewDocument($html);
+        $this->renderTitle($dom);
 
-        if ($titleNode = $dom->queryNode('/html/head/title')) {
-            $titleNode->nodeValue = $this->title;
-        }
+        $eventPrototype = $this->container->make(ViewRenderEventInterface::class, $this);
 
         $render = true;
         while ($render) {
-            foreach ($xpaths as $xpathExpr => $componentClass) {
+            foreach ($this->components as $xpathExpr => $componentClass) {
                 /** @var EventEmitterInterface $component */
-                $component = $this->container->get($componentClass);
+                $component = $this->container->make($componentClass);
 
                 $nodes = $dom->query($xpathExpr);
                 $render = !empty($nodes->length);
 
                 foreach ($nodes as $node) {
-                    // TODO event
-                    $event = $this->container->make(ViewRenderEvent::class);
+                    $event = clone $eventPrototype;
                     $event->setNode($node);
                     $component->emit($event);
                 }

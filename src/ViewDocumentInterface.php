@@ -18,10 +18,17 @@ interface ViewDocumentInterface
 {
     /**
      * @param string $xpath
-     * @param ViewElement|null $node
+     * @param ViewNodeInterface|null $node
      * @return iterable
      */
-    public function query(string $xpath, ViewElement $node = null): iterable;
+    public function query(string $xpath, ViewNodeInterface $node = null): iterable;
+
+    /**
+     * @param string $xpath
+     * @param ViewNodeInterface|null $node
+     * @return ViewNodeInterface
+     */
+    public function queryNode(string $xpath, ViewNodeInterface $node = null): ViewNodeInterface;
 
     /**
      * @return string

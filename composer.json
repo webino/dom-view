@@ -13,7 +13,9 @@
     "php": "~7.1",
     "webino/exceptions": "dev-develop",
     "webino/instance-container": "dev-develop",
-    "webino/event-emitter": "dev-develop"
+    "webino/event-emitter": "dev-develop",
+    "webino/request": "dev-develop@dev",
+    "webino/app-interface": "dev-develop"
   },
   "require-dev": {
     "tracy/tracy": "2.*",

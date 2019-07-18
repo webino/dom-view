@@ -14,7 +14,7 @@ namespace Webino;
  * Interface ViewRenderEventInterface
  * @package dom-view
  */
-interface ViewRenderEventInterface
+interface ViewRenderEventInterface extends AppAwareInterface
 {
     /**
      * Returns view node to render.

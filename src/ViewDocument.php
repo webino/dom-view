@@ -47,23 +47,24 @@ class ViewDocument extends DOMDocument implements ViewDocumentInterface
 
     /**
      * @param string $xpath
-     * @param ViewElement|null $node
+     * @param ViewNodeInterface|null $node
      * @return iterable
      */
-    public function query(string $xpath, ViewElement $node = null): iterable
+    public function query(string $xpath, ViewNodeInterface $node = null): iterable
     {
         return $this->xpath->query($xpath, $node);
     }
 
     /**
      * @param string $xpath
-     * @param ViewElement|null $node
-     * @return ViewElement
+     * @param ViewNodeInterface|null $node
+     * @return ViewNodeInterface
      */
-    public function queryNode(string $xpath, ViewElement $node = null): ViewElement
+    public function queryNode(string $xpath, ViewNodeInterface $node = null): ViewNodeInterface
     {
-        // TODO
-        return $this->xpath->query($xpath, $node)->item(0);
+        /** @var ViewNodeInterface $node */
+        $node = $this->xpath->query($xpath, $node)->item(0);
+        return $node;
     }
 
     /**

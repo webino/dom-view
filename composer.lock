@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e824548222fc1bad7e91a0c2c613e1a1",
+    "content-hash": "d5b980aab598f15654e80fd576714ab4",
     "packages": [
         {
             "name": "psr/container",
@@ -54,6 +54,58 @@
                 "psr"
             ],
             "time": "2017-02-14T16:28:37+00:00"
+        },
+        {
+            "name": "webino/app-interface",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webino/app-interface.git",
+                "reference": "72d1bc853c1466b90d401f06e8d5a63be204d425"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webino/app-interface/zipball/72d1bc853c1466b90d401f06e8d5a63be204d425",
+                "reference": "72d1bc853c1466b90d401f06e8d5a63be204d425",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1",
+                "webino/event-emitter": "dev-develop",
+                "webino/exceptions": "dev-develop",
+                "webino/instance-container": "dev-develop",
+                "webino/request": "dev-develop"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "0.*",
+                "squizlabs/php_codesniffer": "3.*",
+                "tracy/tracy": "2.*",
+                "webino/develop": "dev-develop",
+                "webino/testing": "dev-develop"
+            },
+            "suggest": {
+                "tracy/tracy": "Better debug."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Webino\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Bacinsky",
+                    "email": "peter@bacinsky.sk"
+                }
+            ],
+            "description": "PHP application interface.",
+            "time": "2019-07-18T00:26:10+00:00"
         },
         {
             "name": "webino/event-emitter",
@@ -190,6 +242,55 @@
             ],
             "description": "Class Instance Container implementation.",
             "time": "2019-07-02T14:28:50+00:00"
+        },
+        {
+            "name": "webino/request",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/webino/request.git",
+                "reference": "6a6555150619a57e866aafed9c8dfd8aef8abcb5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/webino/request/zipball/6a6555150619a57e866aafed9c8dfd8aef8abcb5",
+                "reference": "6a6555150619a57e866aafed9c8dfd8aef8abcb5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~7.1",
+                "webino/event-emitter": "dev-develop",
+                "webino/instance-container": "dev-develop"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "0.*",
+                "squizlabs/php_codesniffer": "3.*",
+                "tracy/tracy": "2.*",
+                "webino/testing": "1.*"
+            },
+            "suggest": {
+                "tracy/tracy": "Better debug."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Webino\\": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Peter Bacinsky",
+                    "email": "peter@bacinsky.sk"
+                }
+            ],
+            "description": "Simple PHP environment request implementation.",
+            "time": "2019-07-15T22:25:25+00:00"
         }
     ],
     "packages-dev": [
@@ -1433,16 +1534,16 @@
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "7613eeff265b49a865add75360d1962449e3c12f"
+                "reference": "cad2ec2c40cee828ce5538a4bc5bbde7045a7c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/7613eeff265b49a865add75360d1962449e3c12f",
-                "reference": "7613eeff265b49a865add75360d1962449e3c12f",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/cad2ec2c40cee828ce5538a4bc5bbde7045a7c1b",
+                "reference": "cad2ec2c40cee828ce5538a4bc5bbde7045a7c1b",
                 "shasum": ""
             },
             "require": {
@@ -1496,7 +1597,7 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2019-06-18T12:20:11+00:00"
+            "time": "2019-07-16T14:23:55+00:00"
         },
         {
             "name": "webino/develop",
@@ -1658,6 +1759,8 @@
         "webino/exceptions": 20,
         "webino/instance-container": 20,
         "webino/event-emitter": 20,
+        "webino/request": 20,
+        "webino/app-interface": 20,
         "webino/testing": 20,
         "webino/develop": 20
     },

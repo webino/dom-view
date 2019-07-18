@@ -18,7 +18,7 @@ use Tester\Environment;
 
 class TestComponent extends AbstractViewComponent
 {
-    public const XPATH = '//component';
+    public const NAME = 'component';
 
     public function onRender(ViewRenderEventInterface $event)
     {
@@ -37,8 +37,6 @@ class TestSubComponent extends AbstractViewComponent
 {
     public const NAME = 'sub-component';
 
-    public const XPATH = '//sub-component';
-
     public function onRender(ViewRenderEventInterface $event)
     {
         $node = $event->getNode();
@@ -54,8 +52,13 @@ $html = file_get_contents(__DIR__ . '/DomView.html');
 
 $container = new InstanceContainer;
 
+$components = new ViewComponents([
+    TestSubComponent::class,
+    TestComponent::class,
+]);
+
 /** @var DomView $view */
-$view = $container->get(DomView::class);
+$view = $container->make(DomView::class, $components);
 
 $view->setTitle('Hello Webino');
 
