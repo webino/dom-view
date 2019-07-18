@@ -19,9 +19,9 @@ use ArrayObject;
 class ViewComponents extends ArrayObject implements ViewComponentMapInterface
 {
     /**
-     * @param array $options
+     * @param iterable $options
      */
-    public function __construct(array $options)
+    public function __construct(iterable $options)
     {
         parent::__construct();
 
