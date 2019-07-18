@@ -16,5 +16,5 @@ namespace Webino;
  */
 interface ViewComponentInterface
 {
-    public function onRender(\DOMNode $node);
+    public function onRender(ViewRenderEventInterface $event);
 }

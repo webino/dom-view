@@ -73,8 +73,7 @@ class DomView implements InstanceFactoryMethodInterface
         $render = true;
         while ($render) {
             foreach ($xpaths as $xpathExpr => $componentClass) {
-
-                /** @var ViewComponentInterface $component */
+                /** @var EventEmitterInterface $component */
                 $component = $this->container->get($componentClass);
 
                 $nodes = $dom->query($xpathExpr);
@@ -82,7 +81,9 @@ class DomView implements InstanceFactoryMethodInterface
 
                 foreach ($nodes as $node) {
                     // TODO event
-                    $component->onRender($node);
+                    $event = $this->container->make(ViewRenderEvent::class);
+                    $event->setNode($node);
+                    $component->emit($event);
                 }
             }
         }

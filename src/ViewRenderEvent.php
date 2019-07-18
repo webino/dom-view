@@ -11,15 +11,26 @@
 namespace Webino;
 
 /**
- * Interface ViewRenderEventInterface
+ * Class ViewRenderEvent
  * @package dom-view
  */
-interface ViewRenderEventInterface
+class ViewRenderEvent extends Event implements ViewRenderEventInterface
 {
     /**
      * Returns view node to render.
      *
      * @return ViewElement
      */
-    public function getNode(): ViewElement;
+    public function getNode(): ViewElement
+    {
+        return $this['node'] ?? null;
+    }
+
+    /**
+     * @param ViewElement $node
+     */
+    public function setNode(ViewElement $node): void
+    {
+        $this['node']  = $node;
+    }
 }
