@@ -10,11 +10,13 @@
 
 namespace Webino;
 
+use Traversable;
+
 /**
  * Interface ViewComponentMapInterface
  * @package dom-view
  */
-interface ViewComponentMapInterface
+interface ViewComponentMapInterface extends Traversable
 {
 
 }

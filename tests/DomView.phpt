@@ -62,4 +62,8 @@ $view = $container->make(DomView::class, $components);
 
 $view->setTitle('Hello Webino');
 
-echo $view->render($html);
+/** @var ViewRenderEventInterface $event */
+$event = $container->make(ViewRenderEventInterface::class);
+$event->setLayout($html);
+
+echo $view->render($event);

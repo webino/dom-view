@@ -14,12 +14,37 @@ namespace Webino;
  * Interface ViewRenderEventInterface
  * @package dom-view
  */
-interface ViewRenderEventInterface extends AppAwareInterface
+interface ViewRenderEventInterface extends
+    EventInterface,
+    AppAwareInterface,
+    RequestAwareInterface,
+    HttpRequestAwareInterface
 {
+    /**
+     * Returns layout HTML.
+     *
+     * @return string
+     */
+    public function getLayout(): string;
+
+    /**
+     * Set layout HTML.
+     *
+     * @param string $html
+     */
+    public function setLayout(string $html): void;
+
     /**
      * Returns view node to render.
      *
      * @return ViewElement
      */
     public function getNode(): ViewElement;
+
+    /**
+     * Set node to render.
+     *
+     * @param ViewElement $node
+     */
+    public function setNode(ViewElement $node): void;
 }

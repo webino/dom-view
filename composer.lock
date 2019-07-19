@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webino/event-emitter.git",
-                "reference": "021f860b113da1c08447ab16f4f6c6154d56d76e"
+                "reference": "3eebe8ac94df9e35718644620caf0442a2d2a31a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webino/event-emitter/zipball/021f860b113da1c08447ab16f4f6c6154d56d76e",
-                "reference": "021f860b113da1c08447ab16f4f6c6154d56d76e",
+                "url": "https://api.github.com/repos/webino/event-emitter/zipball/3eebe8ac94df9e35718644620caf0442a2d2a31a",
+                "reference": "3eebe8ac94df9e35718644620caf0442a2d2a31a",
                 "shasum": ""
             },
             "require": {
@@ -150,7 +150,7 @@
                 }
             ],
             "description": "Event Emitter implementation.",
-            "time": "2019-07-02T14:26:49+00:00"
+            "time": "2019-07-18T02:34:25+00:00"
         },
         {
             "name": "webino/exceptions",
@@ -249,17 +249,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/webino/request.git",
-                "reference": "6a6555150619a57e866aafed9c8dfd8aef8abcb5"
+                "reference": "e059c0e58ab33af47bd4814a215ecdac839c0f3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webino/request/zipball/6a6555150619a57e866aafed9c8dfd8aef8abcb5",
-                "reference": "6a6555150619a57e866aafed9c8dfd8aef8abcb5",
+                "url": "https://api.github.com/repos/webino/request/zipball/e059c0e58ab33af47bd4814a215ecdac839c0f3c",
+                "reference": "e059c0e58ab33af47bd4814a215ecdac839c0f3c",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.1",
                 "webino/event-emitter": "dev-develop",
+                "webino/exceptions": "dev-develop",
                 "webino/instance-container": "dev-develop"
             },
             "require-dev": {
@@ -290,7 +291,7 @@
                 }
             ],
             "description": "Simple PHP environment request implementation.",
-            "time": "2019-07-15T22:25:25+00:00"
+            "time": "2019-07-19T12:40:06+00:00"
         }
     ],
     "packages-dev": [

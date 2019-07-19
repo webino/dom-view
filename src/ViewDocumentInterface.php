@@ -26,9 +26,9 @@ interface ViewDocumentInterface
     /**
      * @param string $xpath
      * @param ViewNodeInterface|null $node
-     * @return ViewNodeInterface
+     * @return ViewNodeInterface|null
      */
-    public function queryNode(string $xpath, ViewNodeInterface $node = null): ViewNodeInterface;
+    public function queryNode(string $xpath, ViewNodeInterface $node = null): ?ViewNodeInterface;
 
     /**
      * @return string

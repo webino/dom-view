@@ -74,17 +74,19 @@ class DomView implements InstanceFactoryMethodInterface
     }
 
     /**
-     * @param string $html
+     * @param ViewRenderEventInterface $event
      * @return string
      */
-    public function render(string $html): string
+    public function render(ViewRenderEventInterface $event): string
     {
+        $html = $event->getLayout();
         $dom = $this->container->make(ViewDocumentInterface::class, $html);
 
         $this->renderTitle($dom);
+        $eventPrototype = $event;
 
-        /** @var ViewRenderEventInterface $eventPrototype */
-        $eventPrototype = $this->container->make(ViewRenderEventInterface::class);
+        /** @var EventEmitterInterface $target */
+        $target = $this->container;
 
         $render = true;
         while ($render) {
@@ -98,7 +100,7 @@ class DomView implements InstanceFactoryMethodInterface
                 foreach ($nodes as $node) {
                     $event = clone $eventPrototype;
                     $event->setNode($node);
-                    $component->emit($event, null, $this->container);
+                    $component->emit($event, null, $target);
                 }
             }
         }

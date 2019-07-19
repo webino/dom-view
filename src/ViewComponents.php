@@ -26,7 +26,6 @@ class ViewComponents extends ArrayObject implements ViewComponentMapInterface
         parent::__construct();
 
         foreach ($options as $key => $value) {
-
             if (is_string($value) && class_exists($value)
                 && !empty(class_implements($value)[ViewComponentInterface::class])
             ) {

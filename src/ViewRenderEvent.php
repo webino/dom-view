@@ -17,6 +17,28 @@ namespace Webino;
 class ViewRenderEvent extends Event implements ViewRenderEventInterface
 {
     use AppAwareEventTrait;
+    use RequestAwareEventTrait;
+    use HttpRequestAwareEventTrait;
+
+    /**
+     * Returns layout HTML.
+     *
+     * @return string
+     */
+    public function getLayout(): string
+    {
+        return $this['layout'] ?? '';
+    }
+
+    /**
+     * Set layout HTML.
+     *
+     * @param string $html
+     */
+    public function setLayout(string $html): void
+    {
+        $this['layout'] = $html;
+    }
 
     /**
      * Returns view node to render.

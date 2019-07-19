@@ -13,6 +13,8 @@ namespace Webino;
 /**
  * Interface ViewNodeInterface
  * @package dom-view
+ *
+ * @property string $nodeValue
  */
 interface ViewNodeInterface
 {

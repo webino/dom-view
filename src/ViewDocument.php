@@ -13,6 +13,7 @@ namespace Webino;
 use DOMAttr;
 use DOMDocument;
 use DOMElement;
+use DOMNode;
 use DOMText;
 use const LIBXML_COMPACT;
 use const LIBXML_NOERROR;
@@ -47,23 +48,32 @@ class ViewDocument extends DOMDocument implements ViewDocumentInterface
 
     /**
      * @param string $xpath
-     * @param ViewNodeInterface|null $node
+     * @param ViewNodeInterface|null $refNode
      * @return iterable
      */
-    public function query(string $xpath, ViewNodeInterface $node = null): iterable
+    public function query(string $xpath, ViewNodeInterface $refNode = null): iterable
     {
-        return $this->xpath->query($xpath, $node);
+        if ($refNode instanceof DOMNode) {
+            return $this->xpath->query($xpath, $refNode);
+        }
+        return $this->xpath->query($xpath);
     }
 
     /**
      * @param string $xpath
-     * @param ViewNodeInterface|null $node
-     * @return ViewNodeInterface
+     * @param ViewNodeInterface|null $refNode
+     * @return ViewNodeInterface|null
      */
-    public function queryNode(string $xpath, ViewNodeInterface $node = null): ViewNodeInterface
+    public function queryNode(string $xpath, ViewNodeInterface $refNode = null): ?ViewNodeInterface
     {
-        /** @var ViewNodeInterface $node */
-        $node = $this->xpath->query($xpath, $node)->item(0);
+        if ($refNode instanceof DOMNode) {
+            /** @var ViewNodeInterface $node */
+            $node = $this->xpath->query($xpath, $refNode)->item(0);
+        } else {
+            /** @var ViewNodeInterface $node */
+            $node = $this->xpath->query($xpath)->item(0);
+        }
+
         return $node;
     }
 
@@ -72,6 +82,6 @@ class ViewDocument extends DOMDocument implements ViewDocumentInterface
      */
     public function __toString()
     {
-        return $this->saveHTML();
+        return (string)$this->saveHTML();
     }
 }
