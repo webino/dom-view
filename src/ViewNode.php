@@ -13,6 +13,7 @@ namespace Webino;
 use DOMElement;
 use DOMDocument;
 use DOMNode;
+use DOMText;
 
 /**
  * Class ViewNode
@@ -78,5 +79,58 @@ class ViewNode extends DOMElement implements ViewNodeInterface
     public function replace(ViewNodeInterface $node): void
     {
         $node->parentNode->replaceChild($this, $node);
+    }
+
+    /**
+     * Returns true if node is empty.
+     *
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        $nodeValue = trim($this->nodeValue);
+        if (!empty($nodeValue) || is_numeric($nodeValue)) {
+            return false;
+        }
+
+        // node value is empty,
+        // check for children other than text
+        foreach ($this->childNodes as $childNode) {
+            if (!($childNode instanceof DOMText)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Returns the node body html.
+     *
+     * @return string
+     */
+    public function getInnerHtml(): string
+    {
+        if (null === $this->childNodes) {
+            return '';
+        }
+
+        $innerHtml = '';
+        foreach ($this->childNodes as $child) {
+            $childHtml = $child->ownerDocument->saveXML($child);
+            empty($childHtml) or $innerHtml .= $childHtml;
+        }
+
+        return $innerHtml;
+    }
+
+    /**
+     * Returns the node HTML.
+     *
+     * @return string
+     */
+    public function getOuterHtml(): string
+    {
+        return trim($this->ownerDocument->saveXML($this));
     }
 }
