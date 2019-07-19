@@ -10,13 +10,13 @@
 
 namespace Webino;
 
-use DOMXPath;
+use DOMXPath as Xpath;
 
 /**
- * Class ViewQuery
+ * Class DomXpath
  * @package dom-view
  */
-class ViewQuery extends DOMXPath
+class DomXpath extends Xpath
 {
 
 }

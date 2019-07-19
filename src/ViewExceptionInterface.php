@@ -10,13 +10,11 @@
 
 namespace Webino;
 
-use DOMElement;
-
 /**
- * Class ViewNode
+ * Interface AppExceptionInterface
  * @package dom-view
  */
-class ViewElement extends DOMElement implements ViewNodeInterface
+interface ViewExceptionInterface
 {
-    
+
 }

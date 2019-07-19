@@ -26,7 +26,7 @@ use const LIBXML_NOWARNING;
 class ViewDocument extends DOMDocument implements ViewDocumentInterface
 {
     /**
-     * @var ViewQuery
+     * @var DomXpath
      */
     protected $xpath;
 
@@ -37,13 +37,13 @@ class ViewDocument extends DOMDocument implements ViewDocumentInterface
     {
         parent::__construct();
 
-        $this->registerNodeClass(DOMElement::class, ViewElement::class);
+        $this->registerNodeClass(DOMElement::class, ViewNode::class);
         $this->registerNodeClass(DOMText::class, ViewText::class);
         $this->registerNodeClass(DOMAttr::class, ViewAttribute::class);
 
         $markup = mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8');
         $this->loadHTML($markup, LIBXML_NOERROR | LIBXML_NOWARNING | LIBXML_COMPACT);
-        $this->xpath = new ViewQuery($this);
+        $this->xpath = new DomXpath($this);
     }
 
     /**

@@ -67,7 +67,7 @@ class DomView implements InstanceFactoryMethodInterface
      */
     protected function renderTitle(ViewDocumentInterface $dom): void
     {
-        /** @var ViewElement $titleNode */
+        /** @var ViewNode $titleNode */
         if ($titleNode = $dom->queryNode('/html/head/title')) {
             $titleNode->nodeValue = $this->title;
         }

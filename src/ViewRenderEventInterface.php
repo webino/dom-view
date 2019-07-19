@@ -18,7 +18,8 @@ interface ViewRenderEventInterface extends
     EventInterface,
     AppAwareInterface,
     RequestAwareInterface,
-    HttpRequestAwareInterface
+    HttpRequestAwareInterface,
+    ViewRouteAwareInterface
 {
     /**
      * Returns layout HTML.
@@ -35,16 +36,30 @@ interface ViewRenderEventInterface extends
     public function setLayout(string $html): void;
 
     /**
+     * Returns content HTML.
+     *
+     * @return string
+     */
+    public function getContent(): string;
+
+    /**
+     * Set content HTML.
+     *
+     * @param string $html
+     */
+    public function setContent(string $html): void;
+
+    /**
      * Returns view node to render.
      *
-     * @return ViewElement
+     * @return ViewNode
      */
-    public function getNode(): ViewElement;
+    public function getNode(): ViewNode;
 
     /**
      * Set node to render.
      *
-     * @param ViewElement $node
+     * @param ViewNode $node
      */
-    public function setNode(ViewElement $node): void;
+    public function setNode(ViewNode $node): void;
 }
