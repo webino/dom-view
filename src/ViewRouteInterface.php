@@ -16,6 +16,8 @@ namespace Webino;
  */
 interface ViewRouteInterface
 {
+    public const TITLE = '';
+
     public const LAYOUT = '';
 
     public const TEMPLATE = '';
